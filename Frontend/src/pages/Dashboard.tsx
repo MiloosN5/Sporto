@@ -24,7 +24,7 @@ const Dashboard = () => {
             }
 
             try {
-                const response = await axios.get("/api/profile", {
+                const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/profile`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
