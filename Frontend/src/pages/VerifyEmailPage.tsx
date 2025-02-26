@@ -23,7 +23,7 @@ const VerifyEmailPage = () => {
           return;
         }
 
-        const response = await axios.get(`/api/verify-email?token=${token}`);
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/verify-email?token=${token}`);
         setMessage({ content: response.data.message, type: "success" });
       } catch (error) {
         setMessage({ content: "Verification failed", type: "fail" });
