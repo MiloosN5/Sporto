@@ -1,0 +1,10 @@
+@use '../utilities/mixins' as m;
+
+.dashboard-section {
+    &__content {
+        @include m.flexbox(
+            $direction: column, 
+            $align-items: center, 
+        );
+    }
+}

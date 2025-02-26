@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.feedback {
+    @include m.flexbox(
+        $align-items: center, 
+        $justify-content: center, 
+        $gap: 'md'
+    );
+
+    &--invalid {
+        @extend .feedback;
+        @include m.font(
+            $style: italic, 
+            $weight: 300
+        );
+        @include m.colors(
+            $foreground: 'white', 
+            $fgOpacity: 0.7
+        );
+    }
+
+    &--success {
+        @extend .feedback;
+        @include m.border($border: 'b-feedback--success');
+        @include m.paddings($all: 'sm');
+        align-self: center;
+
+        * {
+            @include m.colors($fill: 'green');
+        }
+    }
+
+    &--fail {
+        @extend .feedback;
+        @include m.border($border: 'b-feedback--fail');
+        @include m.paddings($all: 'sm');
+        align-self: center;
+
+        * {
+            @include m.colors($fill: 'red');
+        }
+    }
+}

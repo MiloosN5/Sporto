@@ -1,0 +1,93 @@
+@use '../components/anchor' as a;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.root-header {
+    &__content {
+        @include m.dimensions(
+            $width: 100%, 
+            $max-width: 'mw-content'
+        );
+        @include m.flexbox(
+            $justify-content: center, 
+            $align-items: stretch, 
+            $wrap: wrap, 
+            $gap: 'md'
+        );
+        @include m.margins($inline: auto);
+    }
+
+    &__logo {
+        order: 1;
+        flex: 1;
+        @include m.flexbox(
+            $direction: column, 
+            $align-items: center, 
+            $justify-content: center
+        );
+    }
+
+    &__nav {
+        order: 4;
+        flex: 100%;
+    }
+
+    &__hamburger {
+        order: 3;
+        @include m.flexbox();
+    }
+
+    &__CTA {
+        order: 2;
+        flex: 100%;
+        @include m.flexbox(
+            $align-items: stretch, 
+            $justify-content: end, 
+            $direction: column,
+            $wrap: wrap, 
+            $gap: 'md'
+        );
+
+        a {
+            flex: 1;
+
+            &.active {
+                @include m.colors($background: 'white');
+                @include m.boxShadow('CTA');
+
+                span {
+                    @include m.colors($foreground: 'black');
+                }
+            }
+        }
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    .root-header {
+        &__CTA {
+            flex: auto;
+            @include m.flexbox($direction: row);
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .root-header {
+        &__nav {
+            order: 2;
+            flex: auto;
+        }
+
+        &__hamburger {
+            order: 3;
+            @include m.hidden($display: none);
+        }
+
+        &__CTA {
+            order: 4;
+            flex: auto;
+            @include m.flexbox($justify-content: right);
+        }
+    }
+}

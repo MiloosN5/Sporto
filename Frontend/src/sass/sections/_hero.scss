@@ -1,0 +1,77 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.hero-section {
+  @include m.position($position: relative);
+  @include m.overflow($overflow: hidden);
+  @include m.dimensions($max-height: 0);
+  @include m.transition();
+  @include m.boxShadow('hero');
+
+  &__wrapper {
+    @include m.paddings($all: 0);
+  }
+
+  &__header {
+    @include m.colors($foreground: 'white');
+    @include m.position(
+      $position: absolute, 
+      $top: 50%, 
+      $left: 20%, 
+      $right: 20%
+    );
+    @include m.transform($position: 'center-Y');
+    @include m.zIndex(1);
+  }
+
+  &__content {
+    @include m.flexbox($direction: column);
+  }
+
+  &__slideImages {
+    .slideImages-article__wrapper {
+      @include m.dimensions($height: 100%);
+    }
+    
+    .slideImages-article__content {
+      @include m.dimensions($height: 100%);
+      @include m.position($position: relative);
+      @include m.border($border: 'b-md');
+      @include m.overflow($overflow: hidden);
+    }
+
+    .slideImages-article__controls {
+      @include m.paddings($all: 'sm');
+
+      &--left {
+        @extend .slideImages-article__controls;
+      }
+
+      &--right {
+        @extend .slideImages-article__controls;
+      }
+    }
+
+    .slideImages-article__indicators {
+      @include m.flexbox($gap: 'sm');
+    }
+  }
+
+  &__norecords {
+    @include m.zIndex(1);
+  }
+}
+
+@include m.breakpoint-up('tablet') {
+  .hero-section {
+    &__header {
+
+      h1,
+      p {
+        @include m.font($word-break: break-word);
+      }
+    }
+  }
+}

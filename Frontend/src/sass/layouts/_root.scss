@@ -1,0 +1,6 @@
+@use '../utilities/mixins' as m;
+
+#root {
+    @include m.overflow($overflow: hidden);
+    @include m.dimensions($width: 100%);
+}

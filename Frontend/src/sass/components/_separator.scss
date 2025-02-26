@@ -1,0 +1,43 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.separator {
+    @include m.paddings(
+        $block: f.rem(20), 
+        $inline: f.rem(10)
+    );
+    @include m.flexbox(
+        $align-items: center, 
+        $justify-content: center
+    );
+    @include m.position($position: relative);
+    @include m.dimensions($width: 100%);
+
+    &::before {
+        content: '';
+        flex: 1;
+        @include m.dimensions($height: f.rem(3));
+        @include m.colors($background: 'prussianBlue');
+        @include m.margins($right: 'md');
+    }
+
+    &::after {
+        content: '';
+        flex: 1;
+        @include m.dimensions($height: f.rem(3));
+        @include m.margins($left: 'md');
+        @include m.colors($background: 'prussianBlue');
+    }
+
+    &__icon {
+        @include m.bgImage(
+            $size: contain,
+            $repeat: no-repeat,
+            $position: center
+        );
+        @include m.dimensions(
+            $width: f.rem(70),
+            $height: f.rem(70)
+        );
+    }
+}

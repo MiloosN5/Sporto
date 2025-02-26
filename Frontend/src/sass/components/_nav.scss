@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+@use '../components/anchor' as a;
+
+.nav {
+    @include m.flexbox();
+
+    &--header {
+        @extend .nav;
+
+        &__list {
+            flex: 1;
+            @extend .nav--header__list;
+
+            li {
+                a:not(.list--sublist a) {
+                    @extend .anchor--transparent;
+
+                    &.active {
+                        span {
+                            @include m.font(
+                                $size: 'fs-active',
+                                $weight: 900
+                            );
+                        }
+                    }
+                }
+
+                ul {
+                    @include m.colors($background: 'black');
+                    @include m.zIndex(2);
+
+                    a {
+                        @extend .anchor--filled;
+                    }
+
+                    svg {
+                        @include m.dimensions($width: auto);
+                    }
+                }
+            }
+        }
+    }
+
+    &--footer {
+        @extend .nav;
+        @include m.flexbox(
+            $direction: column,
+            $gap: 'md'
+        );
+
+        &__list {
+            a {
+                @extend .anchor--transparent;
+            }
+        }
+    }
+}

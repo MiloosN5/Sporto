@@ -1,0 +1,176 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+@use '../utilities/variables' as v;
+
+.sportDetails-article {
+    &__header {
+        @include m.flexbox(
+            $direction: column, 
+            $align-items: center, 
+            $justify-content: center, 
+            $gap: 'md'
+        );
+        @include m.position($position: relative);
+        @include m.font($text-align: center);
+
+        h2 {
+            @include m.font($text-transform: uppercase);
+        }
+
+        p {
+            display: inline-block;
+            @include m.colors(
+                $background: 'black', 
+                $foreground: 'white'
+            );
+            @include m.paddings(
+                $block: 'sm', 
+                $inline: 'md'
+            );
+        }
+    }
+
+    &__border {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: 'lg'
+        );
+        @include m.position(
+            $position: relative, 
+            $top: f.rem(-20)
+        );
+        @include m.border($border: 'b-md--transparent');
+        @include m.paddings($all: 'sm-fluid--mobile');
+
+        &--basketball {
+            @extend .sportDetails-article__border;
+        }
+
+        &--tennis {
+            @extend .sportDetails-article__border;
+        }
+
+        &--volleyball {
+            @extend .sportDetails-article__border;
+        }
+
+        &--boxing {
+            @extend .sportDetails-article__border;
+        }
+
+        &--badminton {
+            @extend .sportDetails-article__border;
+        }
+
+        &--football {
+            @extend .sportDetails-article__border;
+        }
+    }
+
+    &__cover {
+        @include m.position($position: relative);
+        @include m.dimensions(
+            $width: 100%, 
+            $ratio: math.div(3, 1.3)
+        );
+        @include m.bgImage(
+            $repeat: no-repeat, 
+            $size: cover, 
+            $position: center
+        );
+        @include m.border($border: 'b-sm--black');
+    }
+
+    &__bio {
+        .bio-section__wrapper {
+            @include m.flexbox($align-items: center);
+        }
+    }
+
+    &__athletes {
+        .athletes-section__wrapper {
+            @include m.flexbox($align-items: center);
+        }
+    }
+
+    &__events {
+        .events-section__wrapper {
+            @include m.flexbox($align-items: center);
+            @include m.margins($bottom: 'md');
+        }
+    }
+
+    &__footer {
+        @include m.flexbox(
+            $align-items: center, 
+            $direction: column, 
+            $justify-content: center
+        );
+        @include m.font($text-align: center);
+        @include m.position(
+            $position: relative, 
+            $bottom: f.rem(50)
+        );
+        @include m.border($border: 'b-md--black');
+        @include m.colors($background: 'orange');
+        @include m.margins($inline: auto);
+        @include m.dimensions($height: f.rem(50));
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    .sportDetails-article {
+        &__border {
+            @include m.paddings($all: 'md');
+            @include m.position($top: f.rem(-30));
+        }
+
+        &__footer {
+            @include m.position($bottom: f.rem(60));
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .sportDetails-article {
+        &__header {
+            p {
+                @include m.colors(
+                    $background: 'transparent', 
+                    $foreground: 'black'
+                );
+                @include m.font($size: f.rem(30));
+            }
+        }
+
+        &__border {
+            @include m.position($top: f.rem(-70));
+            @include m.paddings($all: 'xl');
+        }
+
+        &__bio {
+            .bio-section__wrapper {
+                @include m.flexbox($align-items: flex-end);
+                @include m.font($text-align: justify);
+            }
+        }
+
+        &__athletes {
+            .athletes-section__wrapper {
+                @include m.flexbox($align-items: flex-start);
+            }
+        }
+
+        &__events {
+            .events-section__wrapper {
+                @include m.flexbox($align-items: flex-end);
+            }
+        }
+
+        &__footer {
+            @include m.position($bottom: f.rem(100));
+        }
+    }
+}

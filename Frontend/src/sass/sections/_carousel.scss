@@ -1,0 +1,134 @@
+@use 'sass:map';
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+@use '../utilities/variables' as v;
+@use '../components/anchor' as a;
+
+.carousel-section {
+  &--sports {
+    @include m.position($position: relative);
+
+    &::after {
+      content: '';
+      @include m.position(
+        $position: absolute,
+        $top: 0,
+        $left: 0
+      );
+      @include m.dimensions(
+        $width: 100%,
+        $height: 100%
+      );
+      @include m.colors(
+        $background: 'blue',
+        $bgOpacity: .6
+      );
+      @include m.zIndex(-1);
+    }
+
+    &__wrapper {
+      @include m.dimensions($max-width: 'section');
+      @include m.margins($inline: auto);
+    }
+
+    &__content {
+      @include m.flexbox(
+        $justify-content: center,
+        $direction: column
+      );
+      @include m.overflow($overflow: hidden);
+      @include m.paddings($all: 'sm');
+
+    }
+
+    &__carousel {
+      .carousel-article__cards {
+        @include m.grid($auto-columns: 100%);
+      }
+
+      .carousel-article__card {
+        @include m.dimensions($height: f.rem(342));
+        @include m.colors(
+          $background: 'white',
+          $foreground: 'black'
+        );
+        @include m.bgImage($image: 'image-card');
+        @include m.zIndex(1);
+
+        &::before {
+          content: '';
+          @include m.colors(
+            $background: 'orange',
+            $bgOpacity: 0.6
+          );
+          @include m.zIndex(-1);
+        }
+      }
+
+      .carousel-article__img {
+        @include m.colors($background: 'white');
+      }
+
+      .carousel-article__viewmore {
+        a {
+          @extend .anchor--filled;
+        }
+      }
+
+      .carousel-article__controls {
+        @include m.zIndex(2);
+
+        &--left {
+          @extend .carousel-article__controls;
+        }
+
+        &--right {
+          @extend .carousel-article__controls;
+        }
+      }
+    }
+
+    &__licenseInfo {
+      align-self: end;
+    }
+
+    &__norecords {
+      @include m.zIndex(1);
+    }
+  }
+}
+
+@include m.breakpoint-up('tablet') {
+  .carousel-section {
+    &--sports {
+      &__content {
+        @include m.paddings($all: 'md');
+      }
+
+      &__carousel {
+        .carousel-article__cards {
+          @include m.grid(
+            $gap: 'md', 
+            $auto-columns: calc((100% - map.get(v.$gap, 'md'))* 0.5)
+          );
+        }
+      }
+    }
+  }
+}
+
+@include m.breakpoint-up('desktop') {
+  .carousel-section {
+    &--sports {
+      &__content {
+        @include m.paddings($all: 'lg');
+      }
+
+      &__carousel {
+        .carousel-article__cards {
+          @include m.grid($auto-columns: calc((100% - 2*map.get(v.$gap, 'md'))* 0.3333333333));
+        }
+      }
+    }
+  }
+}

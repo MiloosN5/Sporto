@@ -1,0 +1,28 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.licenseInfo {
+    @include m.colors($background: 'white');
+    @include m.paddings(
+        $block: 'xs', 
+        $inline: 'sm'
+    );
+    @include m.font(
+        $style: italic, 
+        $word-break: break-word, 
+        $text-align: right
+    );
+    @include m.flexbox($direction: column);
+
+    span {
+        @include m.font($size: 'fs-license');
+    }
+
+    a {
+        @include m.font(
+            $size: 'fs-license', 
+            $weight: bold
+        );
+        display: inline-block;
+    }
+}

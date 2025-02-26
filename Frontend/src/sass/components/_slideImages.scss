@@ -1,0 +1,133 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+@use '../components/button' as b;
+
+.slideImages-article {
+  &__content {
+    @include m.flexbox();
+  }
+
+  &__images {
+    @include m.flexbox();
+    @include m.position(
+      $position: absolute,
+      $top: 0,
+      $left: 0
+    );
+    @include m.dimensions(
+      $width: 100%,
+      $height: 100%
+    );
+  }
+
+  &__image {
+    @include m.position($position: relative);
+    @include m.dimensions(
+      $width: 100%,
+      $height: 100%
+    );
+    flex-shrink: 0;
+
+    img {
+      @include m.dimensions(
+        $width: 100%,
+        $height: 100%
+      );
+      object-fit: cover;
+    }
+  }
+
+  &__controls {
+    @include m.transition('slideControl');
+    @include m.position(
+      $position: absolute,
+      $top: 0,
+      $bottom: 0
+    );
+    @include m.colors(
+      $background: 'black',
+      $bgOpacity: 0
+    );
+
+    &--left {
+      @extend .slideImages-article__controls;
+      @include m.position($left: 0);
+    }
+
+    &--right {
+      @extend .slideImages-article__controls;
+      @include m.position($right: 0);
+    }
+
+    svg {
+      @include m.colors($fill: 'white');
+    }
+  }
+
+  &__indicators {
+    @include m.position(
+      $position: absolute,
+      $bottom: f.rem(10),
+      $left: 50%
+    );
+    @include m.transform($position: translateX(-50%));
+    @include m.flexbox();
+
+    svg {
+      stroke: none;
+      @include m.colors($fill: 'white');
+      @include m.dimensions(
+        $height: f.rem(30),
+        $width: f.rem(30)
+      );
+
+      circle:nth-of-type(2) {
+        @include m.colors(
+          $fill: 'blue',
+          $fillOpacity: 0.8
+        );
+        r: f.rem(4);
+      }
+    }
+  }
+}
+
+@media not (prefers-reduced-motion) {
+  .slideImages-article {
+    &__images {
+      @include m.transition('images');
+    }
+
+    &__controls {
+
+      &--left,
+      &--right {
+
+        &:hover,
+        &:focus {
+          @include m.colors($background: 'black',
+            $bgOpacity: .4);
+
+          svg {
+            @include m.animation('squishControl');
+            @include m.colors($fill: 'orange');
+          }
+        }
+      }
+    }
+
+    &__indicator {
+
+      &:hover,
+      &:focus {
+        svg {
+          @include m.transform($scale: 1.2);
+        }
+      }
+
+      svg {
+        @include m.transition('indicator');
+      }
+    }
+  }
+}

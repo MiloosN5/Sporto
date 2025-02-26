@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+@use '../utilities/variables' as v;
+
+.footer {
+    &__wrapper {
+        @include m.paddings($all: 'sm-fluid--mobile');
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    .footer {
+        &__wrapper {
+            @include m.paddings($all: 'md');
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .footer {
+        &__wrapper {
+            @include m.paddings($all: 'xl');
+        }
+    }
+}

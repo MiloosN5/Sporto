@@ -1,0 +1,15 @@
+@use '../utilities/mixins' as m;
+
+.notFound-section {
+    &__content {
+        @include m.flexbox(
+            $direction: column, 
+            $align-items: center, 
+            $gap: 'lg'
+        );
+
+        p {
+            @include m.flexbox($align-items: center, $gap: 'lg');
+        }
+    }
+}

@@ -1,0 +1,75 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+a {
+    @include m.transition();
+    @include m.flexbox(
+        $justify-content: center, 
+        $align-items: center
+    );
+
+    span {
+        @include m.transition();
+    }
+}
+
+.anchor {
+    @include m.paddings(
+        $block: 'sm', 
+        $inline: 'md'
+    );
+
+    &--filled {
+        @extend .anchor;
+        @include m.colors($background: 'black');
+
+        span {
+            @include m.colors($foreground: 'white');
+        }
+
+        svg,
+        svg * {
+            @include m.colors($foreground: 'white');
+        }
+
+        &:hover {
+            @include m.colors($background: 'orange');
+
+            span {
+                @include m.colors($foreground: 'black');
+            }
+
+            svg,
+            svg path {
+                @include m.colors($foreground: 'black');
+            }
+        }
+    }
+
+    &--transparent {
+        @extend .anchor;
+        @include m.colors($background: 'transparent');
+
+        span {
+            @include m.colors($foreground: 'black');
+        }
+
+        svg,
+        svg path {
+            @include m.colors($foreground: 'black');
+        }
+
+        &:hover {
+            @include m.colors($background: 'orange');
+
+            span {
+                @include m.colors($foreground: 'white');
+            }
+
+            svg,
+            svg path {
+                @include m.colors($foreground: 'white');
+            }
+        }
+    }
+}

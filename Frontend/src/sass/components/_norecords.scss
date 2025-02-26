@@ -1,0 +1,10 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.norecords {
+    @include m.flexbox($justify-content: center);
+    @include m.colors($background: 'white');
+    @include m.paddings($all: 'lg');
+    @include m.margins($inline: auto);
+    @include m.dimensions($width: 100%);
+}

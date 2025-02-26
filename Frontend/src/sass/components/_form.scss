@@ -1,0 +1,107 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+@use '../components/button' as b;
+
+form {
+    button {
+        @extend .button--form;
+        align-self: center;
+        
+        &:disabled {
+            @include m.font(
+                $style: italic, 
+                $weight: 300
+            );
+            @include m.colors(
+                $foreground: 'white', 
+                $fgOpacity: 0.7
+            );
+        }
+    }
+}
+
+.form {
+    @include m.flexbox(
+        $direction: column, 
+        $gap: 'md'
+    );
+    @include m.transition();
+
+    &--subscribe {
+        @extend .form;
+    }
+
+    &--message {
+        @extend .form;
+    }
+
+    &--signup {
+        @extend .form;
+    }
+
+    &--login {
+        @extend .form;
+    }
+
+    &--forgotPassword {
+        @extend .form;
+        @include m.overflow($overflow: hidden);
+    }
+
+    &--resetPassword {
+        @extend .form;
+    }
+
+    &.closedForm {
+        @include m.dimensions($max-height: 0);
+    }
+
+    &.openedForm {
+        @include m.dimensions($max-height: 'mh-form');
+    }
+
+    &__field {
+        @include m.flexbox(
+            $direction: column,
+            $gap: 'md'
+        );
+        
+        input {
+            flex: 1;
+            @include m.colors(
+                $foreground: 'black', 
+                $background: 'orange'
+            );
+            @include m.paddings(
+                $block: 'xs', 
+                $inline: 'sm'
+            );
+
+            &::placeholder {
+                @include m.colors(
+                    $foreground: 'black', 
+                    $fgOpacity: 0.5
+                );
+            }
+        }
+
+        textarea {
+            flex: 1;
+        }
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    .form {
+        &__field {
+            @include m.flexbox(
+                $direction: row,
+                $align-items: center
+            );
+            label {
+                @include m.dimensions($width: 30%);
+                @include m.font($text-align: left);
+            }
+        }
+    }
+}

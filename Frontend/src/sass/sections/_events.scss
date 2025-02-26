@@ -1,0 +1,68 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.events-section {
+    &__content {
+        @include m.flexbox();
+    }
+
+    &__events {
+        @include m.grid(
+            $template-cols: 1fr,
+            $gap: 'sm'
+        );
+    }
+
+    &__event {
+        cursor: context-menu;
+        @include m.transition();
+        @include m.colors(
+            $foreground: 'white',
+            $background: 'black'
+        );
+        @include m.grid($template-cols: 1fr);
+
+        span {
+            @include m.paddings($all: 'sm');
+
+            &:nth-of-type(2) {
+                @include m.transition();
+                @include m.colors(
+                    $background: 'orange',
+                    $foreground: 'black'
+                );
+                @include m.font($weight: 800);
+            }
+        }
+
+        &:hover {
+            @include m.colors(
+                $background: 'transparent',
+                $foreground: 'black'
+            );
+
+            span {
+                &:nth-of-type(2) {
+                    @include m.colors($background: 'transparent');
+                }
+            }
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .events-section {
+        &__event {
+            @include m.grid(
+                $gap: 'md',
+                $template-cols: max-content 1fr
+            );
+
+            span {
+                &:nth-of-type(2) {
+                    @include m.font($text-align: right);
+                }
+            }
+        }
+    }
+}

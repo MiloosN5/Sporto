@@ -1,0 +1,254 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'variables' as v;
+@use 'functions' as f;
+
+// breakpoints
+@mixin breakpoint-up($size) {
+    @if map.has-key(v.$breakpoint, $size) {
+        @media (min-width: map.get(v.$breakpoint, $size)) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Breakpoint #{$size} doesn't exist in the v.$breakpoints!";
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @if map.has-key(v.$breakpoint, $size) {
+        @media (max-width: map.get(v.$breakpoint, $size)) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Breakpoint #{$size} doesn't exist in the v.$breakpoints!";
+    }
+}
+
+// box-sizing
+@mixin dimensions(
+    $width: null,
+    $height: null,
+    $min-width: null,
+    $min-height: null,
+    $max-width: null,
+    $max-height: null,
+    $ratio: null
+) {
+    width: map.get(v.$dimension, $width) or $width;
+    min-width: map.get(v.$dimension, $min-width) or $min-width;
+    max-width: map.get(v.$dimension, $max-width) or $max-width;
+    height: map.get(v.$dimension, $height) or $height;
+    min-height: map.get(v.$dimension, $min-height) or $min-height;
+    max-height: map.get(v.$dimension, $max-height) or $max-height;
+    aspect-ratio: map.get(v.$dimension, $ratio) or $ratio;
+}
+
+@mixin margins(
+    $inline: null, 
+    $block: null, 
+    $top: null,
+    $right: null,
+    $bottom: null,
+    $left: null,
+    $all: null
+) {
+    margin-inline: map.get(v.$margin, $inline) or $inline;
+    margin-block: map.get(v.$margin, $block) or $block;
+    margin-top: map.get(v.$margin, $top) or $top;
+    margin-right: map.get(v.$margin, $right) or $right;
+    margin-bottom: map.get(v.$margin, $bottom) or $bottom;
+    margin-left: map.get(v.$margin, $left) or $left;
+    margin: map.get(v.$margin, $all) or $all;
+}
+
+@mixin outline($outline: null) {
+    outline: map.get(v.$outline, $outline) or $outline;
+}
+
+@mixin border(
+    $border: null, 
+    $radius: null,
+) {
+    border: map.get(v.$border, $border) or $border;
+    border-radius: map.get(v.$border, $radius) or $radius;
+}
+
+@mixin paddings(
+    $inline: null, 
+    $block: null, 
+    $all: null
+) {
+    padding-inline: map.get(v.$padding, $inline) or $inline;
+    padding-block: map.get(v.$padding, $block) or $block;
+    padding: map.get(v.$padding, $all) or $all;
+}
+
+// layouts
+@mixin flexbox(
+    $direction: null, 
+    $justify-content: null, 
+    $align-items: null, 
+    $wrap: null, 
+    $gap: null,
+) {
+    display: flex;
+    flex-direction: map.get(v.$flex, $direction) or $direction;
+    justify-content: map.get(v.$flex, $justify-content) or $justify-content;
+    align-items: map.get(v.$flex, $align-items) or $align-items;
+    flex-wrap: map.get(v.$flex, $wrap) or $wrap;
+    gap: map.get(v.$gap, $gap) or $gap;
+}
+
+@mixin grid(
+    $template-cols: null, 
+    $template-rows: null, 
+    $gap: null, 
+    $auto-flow: null, 
+    $align-items: null, 
+    $justify-content: null, 
+    $auto-columns: null
+) {
+    display: grid;
+    grid-template-columns: map.get(v.$grid, $template-cols) or $template-cols;
+    grid-template-rows: map.get(v.$grid, $template-rows) or $template-rows;
+    gap: map.get(v.$gap, $gap) or $gap;
+    grid-auto-flow: map.get(v.$grid, $auto-flow) or $auto-flow;
+    align-items: map.get(v.$grid, $align-items) or $align-items;
+    justify-content: map.get(v.$grid, $justify-content) or $justify-content;
+    grid-auto-columns: map.get(v.$grid, $auto-columns) or $auto-columns;
+}
+
+@mixin font(
+    $family: null, 
+    $size: null, 
+    $weight: null, 
+    $letter-spacing: null, 
+    $line-height: null, 
+    $word-break: null, 
+    $text-transform: null, 
+    $text-align: null, 
+    $style: null
+) {
+    font-family: map.get(v.$font, $family) or $family;
+    font-size: map.get(v.$font, $size) or $size;
+    font-weight: map.get(v.$font, $weight) or $weight;
+    letter-spacing: map.get(v.$font, $letter-spacing) or $letter-spacing;
+    line-height: map.get(v.$font, $line-height) or $line-height;
+    word-break: map.get(v.$font, $word-break) or $word-break;
+    text-transform: map.get(v.$font, $text-transform) or $text-transform;
+    text-align: map.get(v.$font, $text-align) or $text-align;
+    font-style: map.get(v.$font, $style) or $style;
+}
+
+@mixin colors(
+    $foreground: null, 
+    $background: null, 
+    $fill: null, 
+    $bgOpacity: 1, 
+    $fgOpacity: 1, 
+    $fillOpacity: 1
+) {
+    $color: map.get(v.$color, $foreground) or $foreground;
+    $background-color: map.get(v.$color, $background) or $background;
+    $fill: map.get(v.$color, $fill) or $fill;
+
+    @if $background-color and $bgOpacity !=1 {
+        $background-color: hsla(color.channel($background-color, "hue", $space: hsl), color.channel($background-color, "saturation", $space: hsl), color.channel($background-color, "lightness", $space: hsl), $bgOpacity);
+    }
+
+    @if $color and $fgOpacity !=1 {
+        $color: hsla(color.channel($color, "hue", $space: hsl), color.channel($color, "saturation", $space: hsl), color.channel($color, "lightness", $space: hsl), $fgOpacity);
+    }
+
+    @if $fill and $fillOpacity !=1 {
+        $fill: hsla(color.channel($fill, "hue", $space: hsl), color.channel($fill, "saturation", $space: hsl), color.channel($fill, "lightness", $space: hsl), $fillOpacity);
+    }
+
+    color: $color;
+    background-color: $background-color;
+    fill: $fill;
+}
+
+@mixin bgImage(
+    $image: null, 
+    $repeat: null, 
+    $size: null, 
+    $position: null
+) {
+    background-image: map.get(v.$bgImage, $image) or $image;
+    background-repeat: map.get(v.$bgImage, $repeat) or $repeat;
+    background-size: map.get(v.$bgImage, $size) or $size;
+    background-position: map.get(v.$bgImage, $position) or $position;
+}
+
+@mixin position(
+    $position: null, 
+    $top: null, 
+    $right: null, 
+    $bottom: null, 
+    $left: null
+) {
+    position: map.get(v.$position, $position) or $position;
+    top: map.get(v.$position, $top) or $top;
+    right: map.get(v.$position, $right) or $right;
+    bottom: map.get(v.$position, $bottom) or $bottom;
+    left: map.get(v.$position, $left) or $left;
+}
+
+@mixin transition($transition: 'default') {
+    transition: map.get(v.$transition, $transition) or $transition;
+}
+
+@mixin boxShadow($shadow: null) {
+    box-shadow: map.get(v.$boxShadow, $shadow) or $shadow;
+}
+
+@mixin zIndex($index: null) {
+    z-index: map.get(v.$zIndex, $index) or $index;
+}
+
+@mixin overflow(
+    $overflow: null, 
+    $x: null
+) {
+    overflow: map.get(v.$overflow, $overflow) or $overflow;
+    overflow-x: map.get(v.$overflow, $x) or $x;
+}
+
+@mixin scroll(
+    $snap-type: null, 
+    $behavior: null, 
+    $width: null, 
+    $snap-align: null
+) {
+    scroll-snap-type: map.get(v.$scroll, $snap-type) or $snap-type;
+    scroll-behavior: map.get(v.$scroll, $behavior) or $behavior;
+    scrollbar-width: map.get(v.$scroll, $width) or $width;
+    scroll-snap-align: map.get(v.$scroll, $snap-align) or $snap-align;
+}
+
+@mixin animation($animation: null) {
+    animation: map.get(v.$animation, $animation) or $animation;
+}
+
+@mixin transform(
+    $position: null, 
+    $scale: null
+) {
+    transform: map.get(v.$transform, $position) or $position;
+    scale: map.get(v.$transform, $scale) or $scale;
+}
+
+@mixin hidden(
+    $display: null, 
+    $visibility: null, 
+    $opacity: null
+) {
+    display: map.get(v.$hidden, $display) or $display;
+    visibility: map.get(v.$hidden, $visibility) or $visibility;
+    opacity: map.get(v.$hidden, $opacity) or $opacity;
+}

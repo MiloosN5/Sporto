@@ -1,0 +1,102 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    @include m.font($size: 'fs-root');
+}
+
+* {
+    @include m.font(
+        $size: 'fs-root', 
+        $family: 'ff-Poppins', 
+        $weight: 500,
+        $word-break: break-all
+    );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include m.font($family: 'ff-Anton');
+}
+
+h1 {
+    @include m.font(
+        $size: 'fs-h1', 
+        $line-height: 1.1, 
+        $family: 'ff-Kalnia', 
+        $weight: 800
+    );
+}
+
+h2 {
+    @include m.font($size: 'fs-h2');
+}
+
+h3 {
+    @include m.font($size: 'fs-h3');
+}
+
+h4 {
+    @include m.font(
+        $size: 'fs-h4', 
+        $weight: 900, 
+        $text-transform: uppercase
+    );
+}
+
+p {
+    @include m.font($size: 'fs-text');
+}
+
+a {
+    span {
+        @include m.font($size: 'fs-text');
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    * {
+        @include m.font($word-break: break-word);
+    }
+
+    h1 {
+        @include m.font($size: 'fs-h1--tablet');
+    }
+    
+    h2 {
+        @include m.font($size: 'fs-h2--tablet');
+    }
+    
+    h3 {
+        @include m.font($size: 'fs-h3--tablet');
+    }
+    
+    h4 {
+        @include m.font($size: 'fs-h4--tablet');
+    }
+    
+    p {
+        @include m.font($size: 'fs-text--tablet');
+    }
+    
+    a {
+        span {
+            @include m.font($size: 'fs-text--tablet');
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    * {
+        @include m.font($word-break: keep-all);
+    }
+}

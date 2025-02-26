@@ -1,0 +1,140 @@
+@use 'sass:map';
+@use '../utilities/functions' as f;
+@use '../utilities/animations' as a;
+
+$breakpoint: (
+    'tablet': f.em(768),
+    'desktop': f.em(992)
+);
+
+$color: (
+    'white': hsla(0, 0%, 100%, 1),
+    'black': hsla(0, 0%, 0%, 1),
+    'gray':hsla(0, 0%, 50%, 1),
+    'transparent': transparent,
+    'orange': hsla(30, 55%, 63%, 1),
+    'green': hsla(120, 100%, 25%, 1),
+    'red': hsla(0, 100%, 50%, 1),
+    'prussianBlue': hsla(205, 100%, 17%, 1),
+    'blue': hsla(209, 78%, 21%, 1)
+);
+
+$dimension: (
+    'w-icon': f.rem(24),
+    'mh-list--route': f.rem(500),
+    'mh-list--level2': f.rem(400),
+    'mh-form': f.rem(500),
+    'mw-content': f.rem(1200)
+);
+
+$margin: (
+    'md': f.rem(20)
+);
+
+$outline: (
+    'focus': (f.rem(3) solid map.get($color, 'white'))
+);
+
+$border: (
+    'b-sm--white': f.rem(4) solid map.get($color, 'white'),
+    'b-sm--black': f.rem(4) solid map.get($color, 'black'),
+    'b-md--transparent': f.rem(6) solid map.get($color, 'transparent'),
+    'b-md--black': f.rem(6) solid map.get($color, 'black'),
+    'b-md': f.rem(10) solid map.get($color, 'white'),
+    'b-feedback--success': f.rem(2) solid map.get($color, 'green'),
+    'b-feedback--fail': f.rem(2) solid map.get($color, 'red'),
+    'br-standard': f.rem(8),
+    'br-circle': 100%
+);
+
+$padding: (
+    'xs': f.rem(5),
+    'sm': f.rem(10),
+    'md': f.rem(20),
+    'lg': f.rem(30),
+    'xl': f.rem(40),
+    'sm-fluid--mobile': f.fluidValue(200, 500, 0, 10)
+);
+
+$flex: (
+
+);
+
+$grid: (
+
+);
+
+$gap: (
+    'sm': f.rem(5),
+    'md': f.rem(10),
+    'lg': f.rem(20)
+);
+
+$font: (
+    'fs-license': f.rem(12),
+    'fs-active': f.rem(24),
+    'fs-root': f.rem(16),
+    'fs-h1': f.rem(48),
+    'fs-h1--tablet': f.rem(60),
+    'fs-h2': f.rem(30),
+    'fs-h2--tablet': f.rem(40),
+    'fs-h3': f.rem(26),
+    'fs-h3--tablet': f.rem(32),
+    'fs-h4': f.rem(22),
+    'fs-h4--tablet': f.rem(28),
+    'fs-text': f.rem(16),
+    'fs-text--tablet': f.rem(18),
+    'ff-Poppins': ("Poppins", serif),
+    'ff-Anton': ("Anton", serif),
+    'ff-Kalnia': ("Kalnia", serif),
+    'ff-Yellowtail': ("Yellowtail", cursive)
+);
+
+$bgImage: (
+    'image-card': (url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23003459' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"))
+);
+
+$position: (
+
+);
+
+$transition: (
+    'default': 0.5s ease-in-out,
+    'slideControl': background-color 200ms ease-in-out,
+    'indicator': 100ms ease-in-out,
+    'images': transform 300ms ease-in-out,
+    'section': 1s ease-in-out,
+);
+
+$boxShadow: (
+    'hero': (rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px),
+    'focusVisible': (rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px),
+    'card': (rgba(100, 100, 111, 0.2) f.rem(0) f.rem(7) f.rem(29) f.rem(0)),
+    'carousel': (0 f.rem(3) f.rem(6) rgba(0, 0, 0, 0.23)),
+    'CTA': (rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px)
+);
+
+$zIndex: (
+
+);
+
+$overflow: (
+
+);
+
+$scroll: (
+
+);
+
+$animation: (
+    'squishControl': squishControl 500ms ease-in-out,
+);
+
+$transform: (
+    'center-Y': translate(0, -50%),
+    'center-X': translate(-50%, 0)
+);
+
+$hidden: (
+
+);

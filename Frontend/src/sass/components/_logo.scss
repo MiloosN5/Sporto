@@ -1,0 +1,14 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+.logo {
+    @include m.dimensions(
+        $width: f.rem(120),
+        $height: f.rem(60)
+    );
+    @include m.bgImage(
+        $size: contain,
+        $repeat: no-repeat,
+        $position: center
+    );
+}

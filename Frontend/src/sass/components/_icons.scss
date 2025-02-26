@@ -1,0 +1,20 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+svg,
+svg * {
+    cursor: pointer;
+    @include m.transition();
+    @include m.dimensions(
+        $width: 'w-icon', 
+        $height: auto
+    );
+}
+
+.lucide-arrow-big-left, .lucide-arrow-big-right {
+    @include m.dimensions(
+        $width: f.rem(40), 
+        $height: auto
+    );
+    stroke: none;
+}

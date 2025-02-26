@@ -1,0 +1,23 @@
+@use '../utilities/mixins' as m;
+
+.contact-section {
+    @include m.transition();
+
+    &--subscribe {
+        @extend .contact-section;
+        @include m.colors($background: 'black');
+
+        &__wrapper {
+            @include m.colors($foreground: 'white');
+        }
+    }
+
+    &--message {
+        @extend .contact-section;
+        @include m.colors($background: 'black');
+
+        &__wrapper {
+            @include m.colors($foreground: 'white');
+        }
+    }
+}

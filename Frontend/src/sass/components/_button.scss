@@ -1,0 +1,34 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+button {
+    @include m.transition();
+    @include m.flexbox(
+        $justify-content: center, 
+        $align-items: center
+    );
+}
+
+.button {
+    @include m.paddings(
+        $block: 'sm', 
+        $inline: 'md'
+    );
+
+    &--filled {
+        @extend .button;
+        @include m.colors(
+            $foreground: 'white', 
+            $background: 'black'
+        );
+    }
+
+    &--transparent {
+        @extend .button;
+    }
+
+    &--form {
+        @extend .button;
+        @include m.colors($foreground: 'white');
+    }
+}

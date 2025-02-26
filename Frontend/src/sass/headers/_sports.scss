@@ -1,0 +1,56 @@
+@use '../components/anchor' as a;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.sports-header {
+    &__content {
+        @include m.dimensions(
+            $width: 100%, 
+            $max-width: 'mw-content'
+        );
+        @include m.flexbox(
+            $justify-content: center, 
+            $align-items: stretch, 
+            $wrap: wrap
+        );
+        @include m.margins($inline: auto);
+        @include m.position($position: relative);
+
+        &::after {
+            content: '';
+            @include m.position(
+                $position: absolute, 
+                $top: 0, 
+                $left: 0
+            );
+            @include m.dimensions(
+                $width: 100%, 
+                $height: 100%
+            );
+            @include m.colors(
+                $background: 'blue', 
+                $bgOpacity: .6
+            );
+            @include m.zIndex(-1);
+        }
+    }
+
+    &__nav {
+        flex: 100%;
+        order: 2;
+    }
+
+    &__hamburger {
+        flex: 100%;
+        order: 1;
+        @include m.flexbox($justify-content: flex-end);
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .sports-header {
+        &__hamburger {
+            @include m.hidden($display: none);
+        }
+    }
+}

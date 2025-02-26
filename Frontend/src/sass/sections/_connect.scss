@@ -1,0 +1,25 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+@use '../components/anchor' as a;
+
+.connect-section {
+    @include m.transition('section');
+    @include m.dimensions($max-height: 0);
+    @include m.overflow($overflow: hidden);
+
+    &__wrapper {
+        @include m.dimensions($max-width: 'mw-section');
+        @include m.margins($inline: auto);
+    }
+
+    &__content {
+        @include m.flexbox(
+            $justify-content: center, 
+            $gap: 'md'
+        );
+
+        a {
+            @extend .anchor--filled;
+        }
+    }
+}

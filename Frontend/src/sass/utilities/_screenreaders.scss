@@ -1,0 +1,17 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+.sr-only {
+  @include m.position($position: absolute);
+  @include m.dimensions(
+    $width: f.rem(1), 
+    $height: f.rem(1)
+  );
+  @include m.margins($all: f.rem(-1));
+  @include m.border(0);
+  @include m.paddings($all: 0);
+  @include m.overflow($overflow: 'hidden');
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+}

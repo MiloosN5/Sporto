@@ -1,0 +1,10 @@
+@use '../utilities/_mixins.scss' as m;
+
+@media not (prefers-reduced-motion) {
+    * {
+        &:focus-visible {
+            @include m.outline('focus');
+            @include m.boxShadow('focusVisible');
+        }
+    }
+}

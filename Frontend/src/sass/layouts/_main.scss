@@ -1,0 +1,6 @@
+@use '../utilities/mixins' as m;
+
+main {
+    @include m.flexbox($direction: column);
+    flex: 1;
+}

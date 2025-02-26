@@ -1,0 +1,102 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.athletes-section {
+    &__wrapper {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: 'md'
+        );
+    }
+
+    &__content {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: 'lg', 
+            $wrap: wrap
+        );
+        @include m.dimensions($width: 100%);
+    }
+
+    ul {
+        @include m.grid(
+            $template-cols: 1fr, 
+            $gap: 'sm'
+        );
+    }
+
+    &__athlete {
+        cursor: context-menu;
+        @include m.transition();
+        @include m.grid($template-cols: repeat(2, 1fr));
+        @include m.colors(
+            $background: 'black', 
+            $foreground: 'white'
+        );
+
+        span {
+            @include m.paddings($all: 'sm');
+
+            &:nth-of-type(1) {
+                @include m.paddings($block: 'sm');
+            }
+
+            &:nth-of-type(2) {
+                @include m.transition();
+                @include m.colors(
+                    $background: 'orange', 
+                    $foreground: 'black'
+                );
+                @include m.font($weight: 800);
+            }
+
+            &:nth-of-type(3) {
+                @include m.font($text-align: center);
+                grid-column: span 2;
+            }
+        }
+
+        &:hover {
+            @include m.colors(
+                $background: 'transparent', 
+                $foreground: 'black'
+            );
+
+            span {
+                &:nth-of-type(2) {
+                    @include m.colors($background: 'transparent');
+                }
+            }
+        }
+    }
+}
+
+@include m.breakpoint-up('tablet') {
+    .athletes-section {
+        &__content {
+            @include m.dimensions($width: auto);
+        }
+
+        &__athlete {
+            @include m.paddings($inline: 'xs');
+            @include m.grid(
+                $gap: 'md', 
+                $template-cols: f.rem(30) f.rem(60) auto
+            );
+
+            span {
+                &:nth-of-type(3) {
+                    grid-column: span 1;
+                }
+            }
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .athletes-section {
+        &__content {
+            @include m.flexbox($direction: row);
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@use '../utilities/mixins' as m;
+
+.page-layout {
+    @include m.flexbox($direction: column);
+    @include m.dimensions($min-height: 100%);
+    @include m.font($text-align: center);
+    @include m.position($position: relative);
+
+    &__wrapper {
+        flex: 1;
+        @include m.flexbox($direction: column);
+        @include m.dimensions($min-height: 100%);
+    }
+}

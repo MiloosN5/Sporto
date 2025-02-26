@@ -1,0 +1,8 @@
+@use '../utilities/mixins' as m;
+
+body {
+    @include m.flexbox();
+    @include m.dimensions($min-height: 100vh);
+    @include m.position($position: relative);
+    @include m.colors($background: 'white');
+}

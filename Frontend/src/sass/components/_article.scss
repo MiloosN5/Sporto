@@ -1,0 +1,8 @@
+@use '../utilities/mixins' as m;
+@use '../utilities/functions' as f;
+
+.article {
+    &__wrapper {
+        @include m.flexbox($direction: column);
+    }
+}

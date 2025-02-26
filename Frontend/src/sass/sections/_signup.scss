@@ -1,0 +1,9 @@
+@use '../utilities/mixins' as m;
+
+.signup-section {
+    @include m.colors($background: 'black');
+
+    &__wrapper {
+        @include m.colors($foreground: 'white');
+    }
+}

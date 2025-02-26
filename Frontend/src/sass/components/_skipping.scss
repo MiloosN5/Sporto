@@ -1,0 +1,36 @@
+@use '../utilities/mixins' as m;
+@use '../utilities//functions' as f;
+
+.skipping {
+    @include m.position($position: absolute);
+    @include m.dimensions(
+        $width: f.rem(1), 
+        $height: f.rem(1)
+    );
+    @include m.paddings($all: 0);
+    @include m.margins($all: f.rem(-1));
+    @include m.overflow($overflow: hidden);
+    @include m.border(0);
+    clip: rect(0, 0, 0, 0);
+
+    &:focus-visible {
+        @include m.position(
+            $top: 0,
+            $left: 0
+        );
+        @include m.border($border: 'b-sm--black');
+        @include m.colors(
+            $background: 'white',
+            $foreground: 'black'
+        );
+        @include m.paddings($all: 'sm');
+        @include m.dimensions(
+            $width: 100%, 
+            $height: 100%
+        );
+        @include m.margins($all: 0);
+        @include m.zIndex(100);
+        clip: unset;
+        text-decoration: none;
+    }
+}

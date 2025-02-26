@@ -1,0 +1,112 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.list {
+    @include m.overflow($overflow: hidden);
+    @include m.transition();
+    @include m.flexbox($align-items: center);
+
+    li {
+        flex: 1;
+        @include m.position($position: relative);
+        @include m.flexbox($wrap: wrap);
+        @include m.dimensions($width: 100%);
+
+        a {
+            flex: 1;
+        }
+
+        &:hover {
+            .list--sublist {
+                @include m.dimensions($max-height: 'mh-list--level2');
+            }
+        }
+    }
+
+    &--route {
+        @extend .list;
+
+        li {
+            a {
+                &.active {
+                    span {
+                        @include m.font($family: 'ff-Yellowtail',
+                            $text-transform: lowercase);
+                    }
+                }
+            }
+        }
+    }
+
+    &--horizontal {
+        @extend .list;
+    }
+
+    &--vertical {
+        @include m.flexbox($direction: column);
+        @extend .list;
+    }
+
+    &--fluid {
+        @include m.flexbox($direction: column);
+        @extend .list;
+    }
+
+    &--sublist {
+        @include m.flexbox($direction: column);
+        flex: 100%;
+        @include m.dimensions($max-height: 0);
+        @extend .list;
+    }
+}
+
+@include m.breakpoint-down('desktop') {
+    .list {
+        &--route {
+            &.closedMenu {
+                @include m.dimensions($max-height: 0);
+            }
+
+            &.openedMenu {
+                @include m.dimensions($max-height: 'mh-list--route');
+            }
+
+            &.subListOpened {
+                @include m.dimensions($max-height: calc(map.get(v.$dimension , 'mh-list--route') + map.get(v.$dimension , 'mh-list--level2')));
+            }
+        }
+    }
+}
+
+@include m.breakpoint-up('desktop') {
+    .list {
+        @include m.overflow($overflow: visible);
+
+        li {
+            &:hover {
+                .list--sublist {
+                    @include m.dimensions($max-height: 'mh-list--level2');
+                    @include m.margins($block: var(--item-height) 0);
+                    @include m.paddings($all: 'md');
+                    @include m.hidden($opacity: 1);
+                    pointer-events: visible;
+                }
+            }
+        }
+
+        &--fluid {
+            @include m.flexbox($direction: row,
+                $wrap: wrap);
+        }
+
+        &--sublist {
+            @include m.position($position: absolute);
+            @include m.dimensions($height: auto);
+            @include m.margins($block: 0);
+            @include m.hidden($opacity: 0);
+            pointer-events: none;
+        }
+    }
+}
