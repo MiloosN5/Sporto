@@ -46,7 +46,7 @@ const SignupForm = () => {
 
         if (isValid()) {
             try {
-                const response = await axios.post('/api/signup', formData);
+                const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/signup`, formData);
 
                 if (response.status === 201) {
                     setMessage({ content: 'Signup successful! Please, verify your email!', type: 'success' });

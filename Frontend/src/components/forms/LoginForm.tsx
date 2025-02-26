@@ -59,7 +59,7 @@ const LoginForm = ({ status }: LoginFormProps) => {
 
         if (isValid()) {
             try {
-                const response = await axios.post('/api/login', formData);
+                const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/login`, formData);
 
                 if (response.status === 200) {
                     login(response.data.token, formData.email);
