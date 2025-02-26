@@ -50,7 +50,7 @@ const SubscribeForm = () => {
 
     if (isValid()) {
       try {
-        const response = await axios.post('/api/subscribe', formData);
+        const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/subscribe`, formData);
 
         if (response.status === 200) {
           console.log('Subscribed successfully', response);

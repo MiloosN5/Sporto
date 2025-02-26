@@ -45,7 +45,7 @@ const ForgotPasswordForm = ({status}: ForgotPasswordFormProps) => {
 
         if (isValid()) {
             try {
-                const response = await axios.post('/api/forgot-password', { email: formData.email });
+                const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/forgot-password`, { email: formData.email });
 
                 if (response.status === 200) {
                     setMessage({ content: 'Password reset link sent to your email', type: 'success' });

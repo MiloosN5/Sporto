@@ -53,7 +53,7 @@ const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
 
         if (isValid()) {
             try {
-                const response = await axios.post("/api/reset-password", {
+                const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/reset-password`, {
                     token,
                     newPassword
                 });

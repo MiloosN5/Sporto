@@ -54,7 +54,7 @@ const MessageForm: React.FC = () => {
 
     if (isValid()) {
       try {
-        const response = await axios.post('/api/send-email', formData);
+        const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/send-email`, formData);
 
         if (response.status === 200) {
           console.log('Message sent successfully');
