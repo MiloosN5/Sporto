@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 
 // components
-import RootLayout from './layouts/PageLayout'
+import PageLayout from './layouts/PageLayout'
 import SportsLayout from './layouts/SportsLayout'
 import HomePage from './pages/HomePage'
 import SportPage from './pages/SportPage'
@@ -32,8 +32,8 @@ import { heroLoader, routesLoader, sportsLoader } from './services/services'
 const router = createBrowserRouter([
   {
     path: '/',
-    id: 'rootLayout',
-    element: <RootLayout />,
+    id: 'pageLayout',
+    element: <PageLayout />,
     loader: routesLoader,
     children: [
       {
