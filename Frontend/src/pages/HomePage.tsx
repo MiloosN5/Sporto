@@ -18,7 +18,7 @@ import { Data } from '../types/data';
 
 const HomePage = () => {
   
-  const { pageRoutes } = useRouteLoaderData('rootLayout') as { pageRoutes: Route[] }
+  const { pageRoutes } = useRouteLoaderData('pageLayout') as { pageRoutes: Route[] }
   const { heroData } = useLoaderData() as { heroData: Data[] }
 
   const sportRoute = pageRoutes.find(route => route.name === 'sports');
