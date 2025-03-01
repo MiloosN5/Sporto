@@ -5,7 +5,7 @@ export interface Data {
     name?: string;
     URL?: string;
     type?: any;
-    text?: string;
+    text?: string[];
     athletes?: {
         men?: Athlete[],
         women?: Athlete[]

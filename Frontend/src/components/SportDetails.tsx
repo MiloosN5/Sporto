@@ -102,7 +102,15 @@ const SportDetails = forwardRef<SportDetailsRef, SportDetailsProps>(({
                             />
                         }
                         contentChildren={
-                            <p>{data?.text || 'No bio available'}</p>
+                            <>
+                                {data?.text && data?.text.length > 0 ? (
+                                    data.text.map((par, index) => (
+                                        <p key={index}>{par}</p>
+                                    ))
+                                ) : (
+                                    <p>No bio available</p>
+                                )}
+                            </>
                         }
                     />
                     <Section
