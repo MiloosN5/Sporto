@@ -11,7 +11,7 @@
 
 ## Preview
 
-<img src="./frontend/src/preview/Sporto__LinkedIn__1.png"  width="100%;" height="auto" alt="" />
+<img src="./Frontend/src/preview/Sporto__LinkedIn__1.png"  width="100%;" height="auto" alt="" />
 
 ## About
 
