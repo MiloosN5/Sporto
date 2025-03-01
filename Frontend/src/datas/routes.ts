@@ -61,7 +61,7 @@ getPageRoutes()
     });
 
 export const exploreRoutes: Route[] = [
-    'about',
+    'news',
     'contact',
     'sports'
 ].map((routeName) => {

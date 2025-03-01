@@ -40,7 +40,7 @@ const RootHeader = ({ data }: { data: Route[] }) => {
             level={2}
             blockPrefix="root"
             title="Root Header"
-            visibleTitle={true}
+            visibleTitle={false}
         >
             <div className="root-header__logo logo">
                 <LogoIcon />

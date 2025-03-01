@@ -8,6 +8,7 @@
   }
 
   &__cards {
+    flex: 1;
     @include m.overflow($x: auto);
     @include m.scroll(
       $snap-type: x mandatory, 
