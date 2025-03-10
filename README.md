@@ -5,12 +5,12 @@
 - [Preview](#preview)
 - [About](#about)
   - [Tools & Requirements](#tools--requirements)   
-  - [Frontend](#frontend)
-    - [SPA & Routing](#spa--routing)
-    - [Components (Reusable Code)](#components-reusable-code)
-    - [Fetching Data](#fetching-data)
-    - [Slider Images & Carousel](#slider-images--carousel)
-  - [Backend](#backend)
+- [Frontend](#frontend)
+  - [SPA & Routing](#spa--routing)
+  - [Components (Reusable Code)](#components-reusable-code)
+  - [Fetching Data](#fetching-data)
+  - [Slider Images & Carousel](#slider-images--carousel)
+- [Backend](#backend)
 - [Credits](#credits)
 
 ## Preview
@@ -45,7 +45,7 @@ A website that showcases my full-stack and PERN development skills while helping
 - Dynamic element visibility (based on scrolling and setTimeout)
 - Carousel/slider for images
 
-### Frontend
+## Frontend
 
 The visual aspect of this website is created through a process that consists of HTML for the structure, CSS (SASS) for styling, and JavaScript/TypeScript for functionality. For a more production-oriented approach and better organization, React is used as a JavaScript library. To prevent unnecessary page reloads when switching between routes, the website follows the Single Page Application (SPA) approach. Some data displayed on the site is fetched from API endpoints, meaning the application waits for a response from the server.
 
@@ -54,7 +54,7 @@ For a better user experience:
 - If the response is still pending, a loading component will be displayed.
 - If the user navigates to a non-existent route, they will be redirected to a generic "Page not found" (404) page.
 
-#### SPA & Routing
+### SPA & Routing
 
 A Single-Page Application (SPA) means that the website consists of only one page, and its content is dynamically updated/switched without full page reloads. The react-router-dom library is used to handle routing. When loading a specific route, a loader function can be set up to asynchronously fetch data from a server. The route will only render once the data has been successfully retrieved. To avoid defining a loader for every route that requires data, it is placed at the highest necessary level. Then, using useRouteLoaderData and the assigned id of that route, nested routes can access the loaded data.
 
@@ -93,7 +93,7 @@ The website content follows this structure:
 
 ```
 
-#### Components (Reusable Code)
+### Components (Reusable Code)
 
 The goal was to create reusable components that can be used multiple times while maintaining clean and readable syntax when passing props. 
 Although the internal logic of a component can vary in complexity depending on its functionality, the way it is used and called in the code remains clear and well-structured. This ensures better maintainability and readability throughout the project.
@@ -147,7 +147,7 @@ Although the internal logic of a component can vary in complexity depending on i
 
 ```
 
-#### Fetching Data
+### Fetching Data
 
 To communicate with the server and retrieve data, the Axios library is used. Since requests are asynchronous, they return a Promise, meaning a response is guaranteed—either in the form of the requested data or an error message.
 
@@ -179,7 +179,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
 
 ```
 
-#### Slider Images & Carousel 
+### Slider Images & Carousel 
 
 - Slider Images (Hero)
 
@@ -291,6 +291,6 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
     };
   ```
 
-### Backend
+## Backend
 
-### Credits
+## Credits
