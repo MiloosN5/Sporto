@@ -227,7 +227,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - Adjust the scrollLeft value accordingly (increase for right, decrease for left).
   - Since the card width changes dynamically with window resizing, the layout must adapt based on mobile, tablet, or desktop viewports.
   - A resize event listener ensures the card width and arrangement update whenever the window size changes.
-
+  <br/>
   
   ```tsx
     useEffect(() => {
@@ -260,7 +260,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - While dragging, continuously update the scrollLeft property based on the difference between the starting pageX value and the current pageX value.
   - To smooth out the drag motion, the difference can be divided by 2 (or another factor) to slow down movement.
   - The mouseup event listener detects when dragging ends, preventing further scrolling.
-
+  <br/>
   
   ```tsx
     const dragStart = (e: React.MouseEvent<HTMLUListElement>) => {
