@@ -7,9 +7,9 @@
   - [Tools & Requirements](#tools--requirements)   
   - [Frontend](#frontend)
     - [SPA & Routing](#spa--routing)
-    - [Components (Reusable Code)](#components-%28reusable-code%29)
+    - [Components (Reusable Code)](#components-reusable-code)
     - [Fetching Data](#fetching-data)
-    - [Slider Images & Carousel](slider-images--carousel)
+    - [Slider Images & Carousel](#slider-images--carousel)
   - [Backend](#backend)
 - [Credits](#credits)
 
