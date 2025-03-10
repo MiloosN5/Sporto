@@ -63,6 +63,7 @@ The website content follows this structure:
 - Layout (e.g., PageLayout, SportsLayout)
 - Routes (e.g., HomePage, SportPage, ContactPage, SignupPage, LoginPage, etc.)
 
+
 ```ts
   // Routing Tree
   const router = createBrowserRouter([
@@ -188,7 +189,8 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - If the first image (index 0) is displayed, the parent does not move.
   - When the second image appears, the parent shifts by 100%, and for each subsequent image, it moves another 100%.
   - A check is required to detect when the last image is reached, so the slider can loop back to the first image seamlessly.
-  
+
+
   ```tsx
     const [imageIndex, setImageIndex] = useState<number>(0);
     
@@ -225,6 +227,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - Adjust the scrollLeft value accordingly (increase for right, decrease for left).
   - Since the card width changes dynamically with window resizing, the layout must adapt based on mobile, tablet, or desktop viewports.
   - A resize event listener ensures the card width and arrangement update whenever the window size changes.
+
   
   ```tsx
     useEffect(() => {
@@ -257,6 +260,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - While dragging, continuously update the scrollLeft property based on the difference between the starting pageX value and the current pageX value.
   - To smooth out the drag motion, the difference can be divided by 2 (or another factor) to slow down movement.
   - The mouseup event listener detects when dragging ends, preventing further scrolling.
+
   
   ```tsx
     const dragStart = (e: React.MouseEvent<HTMLUListElement>) => {
