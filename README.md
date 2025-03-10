@@ -62,7 +62,7 @@ The website content follows this structure:
 - Page (only one main page)
 - Layout (e.g., PageLayout, SportsLayout)
 - Routes (e.g., HomePage, SportPage, ContactPage, SignupPage, LoginPage, etc.)
-
+<br/>
 
 ```ts
   // Routing Tree
@@ -189,7 +189,7 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   - If the first image (index 0) is displayed, the parent does not move.
   - When the second image appears, the parent shifts by 100%, and for each subsequent image, it moves another 100%.
   - A check is required to detect when the last image is reached, so the slider can loop back to the first image seamlessly.
-
+  <br/>
 
   ```tsx
     const [imageIndex, setImageIndex] = useState<number>(0);
