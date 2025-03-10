@@ -61,8 +61,7 @@ A Single-Page Application (SPA) means that the website consists of only one page
 The website content follows this structure:
 - Page (only one main page)
 - Layout (e.g., PageLayout, SportsLayout)
-- Routes (e.g., HomePage, SportPage, ContactPage, SignupPage, LoginPage, etc.)
-<br/>
+- Routes (e.g., HomePage, SportPage, ContactPage, SignupPage, LoginPage, etc.).
 
 ```ts
   // Routing Tree
