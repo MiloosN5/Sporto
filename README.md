@@ -388,3 +388,28 @@ Users can communicate with the website owners either by subscribing to a newslet
 ```
 
 ## Credits
+
+- Hero images
+  - license: Unsplash License - [LINK](https://unsplash.com/license)
+  - platform: Unsplash - [LINK](https://unsplash.com/)
+  - image 1 - [LINK](https://images.unsplash.com/photo-1606244864456-8bee63fce472?q=80&w=1962&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    - author: Brecht Deboosere 
+  - image 2 - [LINK](https://images.unsplash.com/photo-1601224748193-d24f166b5c77?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    - author: Sean Benesh
+  - image 3 - [LINK](https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    - author: Connor Coyne
+  - image 4 - [LINK](https://images.unsplash.com/photo-1508972348941-5e2b14d04c64?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    - author: Paul Waliez
+- Carousel images
+  - license: Digital License - [LINK]('https://iconscout.com/licenses#iconscout)
+  - platform: IconScout - [LINK](https://iconscout.com/)
+  - images - [LINK](https://iconscout.com/free-icon-pack/sports-284)
+  - author: jankquin
+- Separator image
+  - license: Digital License - [LINK](https://iconscout.com/free-icon-pack/sports-284)
+  - platform: IconScout - [LINK](https://iconscout.com/)
+  - image - [LINK](https://iconscout.com/free-icon-pack/school-and-education-vol-1-4_502)
+- Sport covers
+  - license: PicLumen License - [LINK](https://www.piclumen.com/terms-of-use/)
+  - platform: PicLumen - [LINK](https://www.piclumen.com/)
+- Lucide React Icons - [LINK](https://lucide.dev/guide/packages/lucide-react)
