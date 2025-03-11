@@ -401,12 +401,12 @@ Users can communicate with the website owners either by subscribing to a newslet
   - image 4 - [LINK](https://unsplash.com/photos/group-of-men-playing-basketball-on-alleyway-LuQE3lqbVqo)
     - author: Paul Waliez
 - Carousel images
-  - license: Digital License - [LINK]('https://iconscout.com/licenses#iconscout)
+  - license: Digital License - [LINK](https://iconscout.com/licenses#iconscout)
   - platform: IconScout - [LINK](https://iconscout.com/)
   - images - [LINK](https://iconscout.com/free-icon-pack/sports-284)
   - author: jankquin
 - Separator image
-  - license: Digital License - [LINK](https://iconscout.com/free-icon-pack/sports-284)
+  - license: Digital License - [LINK](https://iconscout.com/licenses#iconscout)
   - platform: IconScout - [LINK](https://iconscout.com/)
   - image - [LINK](https://iconscout.com/free-icon-pack/school-and-education-vol-1-4_502)
 - Sport covers
