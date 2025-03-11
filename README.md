@@ -11,6 +11,10 @@
   - [Fetching Data](#fetching-data)
   - [Slider Images & Carousel](#slider-images--carousel)
 - [Backend](#backend)
+  - [Express App](#express-app)
+  - [PostgreSQL & RESTful API](#postgresql--restful-api)
+  - [JWT](#jwt)
+  - [Nodemailer](#nodemailer)
 - [Credits](#credits)
 
 ## Preview
