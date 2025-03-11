@@ -33,6 +33,7 @@ A website that showcases my full-stack and PERN development skills while helping
 - Backend: Express + Node.js
 - Runtime: Node.js (for backend)
 - Typescript (Frontend + Backend)
+- MVC architecture 
 - Database: PostgreSQL
 - Styling: CSS/SASS
 - Accessibility support
@@ -291,5 +292,95 @@ To communicate with the server and retrieve data, the Axios library is used. Sin
   ```
 
 ## Backend
+
+The purpose of the server-side is to process data received from the client, store it, handle all client requests, and send responses back to the client. To improve development with Node.js, the Express.js framework is used.
+
+User authentication is handled with JWT (JSON Web Token), while data is stored in Supabase (a cloud-based platform) using a PostgreSQL database. Nodemailer is used for sending emails.
+
+### Express App
+
+Using Express.js allows for an elegant application setup. First, the express function is called to initialize the app. Then, various middlewares are applied to enhance functionality.
+
+One essential middleware is the json function from the built-in Express.js body parser, which parses incoming JSON data in requests. Another key middleware is CORS (Cross-Origin Resource Sharing), configured using the cors package. This defines which domains are allowed to send requests to the server. All application routes are registered using middleware. Finally, the listen method is used to start the server on the specified port. 
+
+```ts
+  const app: Application = express();
+  app.use(bodyParser.json());
+  app.use(cors());
+  
+  app.use('/api', authRoutes);
+  app.use('/api', contactRoutes);
+  
+  app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+  });
+```
+
+### PostgreSQL & RESTful API
+
+Request handling is organized using the MVC architecture: models (userModel.ts), controllers (authController.ts, contactController.ts), and views (Frontend). For better organization, controllers are split into 'routes' (which only define routes) and 'controllers' (which contain business logic).
+
+```ts
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      email VARCHAR(255) UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      is_verified BOOLEAN DEFAULT FALSE
+    );
+  `;
+```
+
+### JWT 
+
+JWT is used for user authentication by generating a token that verifies whether a user is authenticated:
+- **sign** is used to create a new token, typically during registration and login. When a user logs in, a new token is generated and sent to them for future authentication. It is also used when generating a temporary token for forgotten password requests.
+- **verify** is used to validate an existing token. It is applied in authentication middleware (authMiddleware) to check whether the user's token is valid. Additionally, it is used for email verification, password resets, and authentication checks.
+
+```ts
+  export const signup = async (req: Request, res: Response): Promise<void> => {
+      const { email, password } = req.body;
+      const emailToken = jwt.sign({ email }, process.env.JWT_SECRET || 'default_secret', {
+          expiresIn: '1h',
+      });
+  };
+  
+  export const verifyEmail = async (req: Request, res: Response) => {
+      const token = req.query.token as string;
+      const { email } = jwt.verify(token, process.env.JWT_SECRET || 'default_secret') as { email: string };
+  };
+```
+
+### Nodemailer
+
+Users can communicate with the website owners either by subscribing to a newsletter or by submitting a question. Nodemailer is used to send a confirmation email, informing users that their form submission was successful. It is also used for email verification and forgotten password requests.
+
+```ts
+  // nodemailer service
+  export const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: `${process.env.EMAIL}`,
+          pass: `${process.env.PASS}`
+      }
+  });
+  
+  // Send-email controller
+  export const sendEmail = async (req: Request, res: Response) => {
+      const { email, subject, message } = req.body;
+      const mailOptions = {
+          from: process.env.EMAIL,
+          to: email,
+          subject: subject,
+          text: message
+      };
+      try {
+          await transporter.sendMail(mailOptions);
+          res.status(200).send({ message: 'Email sent successfully!' });
+      } catch (error) {
+          res.status(500).send({ error: 'Error sending email' });
+      };
+  };
+```
 
 ## Credits
