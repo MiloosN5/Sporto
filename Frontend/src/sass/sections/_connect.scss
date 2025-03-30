@@ -8,7 +8,6 @@
     @include m.overflow($overflow: hidden);
 
     &__wrapper {
-        @include m.dimensions($max-width: 'mw-section');
         @include m.margins($inline: auto);
     }
 

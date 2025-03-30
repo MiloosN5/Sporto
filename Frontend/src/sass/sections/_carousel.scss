@@ -27,7 +27,6 @@
     }
 
     &__wrapper {
-      @include m.dimensions($max-width: 'section');
       @include m.margins($inline: auto);
     }
 
