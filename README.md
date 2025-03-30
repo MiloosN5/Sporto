@@ -413,3 +413,8 @@ Users can communicate with the website owners either by subscribing to a newslet
   - license: PicLumen License - [LINK](https://www.piclumen.com/terms-of-use/)
   - platform: PicLumen - [LINK](https://www.piclumen.com/)
 - Lucide React Icons - [LINK](https://lucide.dev/guide/packages/lucide-react)
+- Google Fonts
+  - Kalnia - [LINK](https://fonts.google.com/specimen/Kalnia)
+  - Yellowtail - [LINK](https://fonts.google.com/specimen/Yellowtail)
+  - Anton - [LINK](https://fonts.google.com/specimen/Anton)
+  - Poppins - [LINK](https://fonts.google.com/specimen/Poppins)
