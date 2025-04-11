@@ -1,5 +1,7 @@
 # Sporto (PERN Project)
 
+- Live: ✔️ [[Link](https://sporto-frontend.onrender.com/)]
+
 ## Table of contents
 
 - [Preview](#preview)
